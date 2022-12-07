@@ -11,6 +11,7 @@
 	<properties>
 		<version.spring>5.3.8</version.spring>
 		<version.spring.security>5.5.1</version.spring.security>
+		<version.jstl>1.2</version.jstl>
 	</properties>
 
 	<build>
@@ -135,11 +136,11 @@
 <!-- 			<scope>runtime</scope> -->
 <!-- 		</dependency> -->
 
-<!-- 		<dependency> -->
-<!-- 			<groupId>javax.servlet</groupId> -->
-<!-- 			<artifactId>jstl</artifactId> -->
-<!-- 			<version>${version.jstl}</version> -->
-<!-- 		</dependency> -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+			<version>${version.jstl}</version>
+		</dependency>
 
 		<dependency>
 			<groupId>com.atlassian.commonmark</groupId>
