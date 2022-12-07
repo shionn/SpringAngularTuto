@@ -1,0 +1,209 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>org.shionn</groupId>
+	<artifactId>SpringAngularTuto</artifactId>
+	<packaging>war</packaging>
+	<version>0.1-SNAPSHOT</version>
+	<!-- test -->
+
+	<properties>
+		<version.spring>5.3.8</version.spring>
+		<version.spring.security>5.5.1</version.spring.security>
+	</properties>
+
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>17</source>
+					<target>17</target>
+					<encoding>UTF-8</encoding>
+				</configuration>
+				<version>3.8.1</version>
+			</plugin>
+
+			<plugin>
+				<artifactId>maven-clean-plugin</artifactId>
+				<configuration>
+					<filesets>
+						<fileset>
+							<directory>src/main/webapp/css/</directory>
+						</fileset>
+					</filesets>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>3.3.1</version>
+			</plugin>
+
+<!-- 			<plugin> -->
+<!-- 				<groupId>nl.geodienstencentrum.maven</groupId> -->
+<!-- 				<artifactId>sass-maven-plugin</artifactId> -->
+<!-- 				<version>3.7.2</version> -->
+<!-- 				<executions> -->
+<!-- 					<execution> -->
+<!-- 						<id>sass</id> -->
+<!-- 						<phase>generate-sources</phase> -->
+<!-- 						<goals> -->
+<!-- 							<goal>update-stylesheets</goal> -->
+<!-- 						</goals> -->
+<!-- 					</execution> -->
+<!-- 				</executions> -->
+<!-- 				<configuration> -->
+<!-- 					<sassSourceDirectory>src/main/sass/</sassSourceDirectory> -->
+<!-- 					<includes>style.scss</includes> -->
+<!-- 					<excludes>**/*.scss</excludes> -->
+<!-- 					<destination>src/main/webapp/css/</destination> -->
+<!-- 				</configuration> -->
+<!-- 			</plugin> -->
+
+			<plugin>
+				<groupId>org.apache.tomcat.maven</groupId>
+				<artifactId>tomcat7-maven-plugin</artifactId>
+				<configuration>
+					<url>http://192.168.50.TODO:8080/manager/text</url>
+					<server>Proxmox</server>
+					<path>/</path>
+					<skipTests>true</skipTests>
+				</configuration>
+			</plugin>
+		</plugins>
+
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+			</resource>
+		</resources>
+
+	</build>
+
+	<profiles>
+
+<!-- 		<profile> -->
+<!-- 			<id>dev</id> -->
+<!-- 			<properties> -->
+<!-- 				<mybatis.driver>com.mysql.cj.jdbc.Driver</mybatis.driver> -->
+<!-- 				<mybatis.url>jdbc:mysql://${armybuilder.mysql.host}:3306/armybuilder?serverTimezone=Europe/Paris</mybatis.url> -->
+<!-- 				<mybatis.username>${armybuilder.mysql.user}</mybatis.username> -->
+<!-- 				<mybatis.password>${armybuilder.mysql.pass}</mybatis.password> -->
+<!-- 			</properties> -->
+<!-- 		</profile> -->
+
+<!-- 		<profile> -->
+<!-- 			<id>proxmox</id> -->
+<!-- 			<properties> -->
+<!-- 				<mybatis.driver>com.mysql.cj.jdbc.Driver</mybatis.driver> -->
+<!-- 				<mybatis.url>jdbc:mysql://${armybuilder.mysql.host}:3306/armybuilder?serverTimezone=Europe/Paris</mybatis.url> -->
+<!-- 				<mybatis.username>${armybuilder.mysql.user}</mybatis.username> -->
+<!-- 				<mybatis.password>${armybuilder.mysql.pass}</mybatis.password> -->
+<!-- 			</properties> -->
+<!-- 		</profile> -->
+
+	</profiles>
+
+
+	<dependencies>
+		<!-- Spring -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>${version.spring}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-web</artifactId>
+			<version>${version.spring.security}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-config</artifactId>
+			<version>${version.spring.security}</version>
+		</dependency>
+
+		<!-- pour multipart/form-data -->
+<!-- 		<dependency> -->
+<!-- 			<groupId>commons-fileupload</groupId> -->
+<!-- 			<artifactId>commons-fileupload</artifactId> -->
+<!-- 			<version>1.3.3</version> -->
+<!-- 			<scope>runtime</scope> -->
+<!-- 		</dependency> -->
+
+<!-- 		<dependency> -->
+<!-- 			<groupId>javax.servlet</groupId> -->
+<!-- 			<artifactId>jstl</artifactId> -->
+<!-- 			<version>${version.jstl}</version> -->
+<!-- 		</dependency> -->
+
+		<dependency>
+			<groupId>com.atlassian.commonmark</groupId>
+			<artifactId>commonmark</artifactId>
+			<version>0.7.1</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-collections</groupId>
+			<artifactId>commons-collections</artifactId>
+			<version>3.2.1</version>
+		</dependency>
+
+		<!-- Persistence / MyBatis / Serialisation -->
+		<dependency>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis</artifactId>
+			<version>3.5.7</version>
+		</dependency>
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>8.0.25</version>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>2.12.4</version>
+		</dependency>
+
+		<!-- logging -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-simple</artifactId>
+			<version>1.7.1</version>
+		</dependency>
+
+		<!-- Spec -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>3.1.0</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet.jsp</groupId>
+			<artifactId>javax.servlet.jsp-api</artifactId>
+			<version>2.3.3</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.13.2</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.assertj</groupId>
+			<artifactId>assertj-core</artifactId>
+			<version>3.20.2</version>
+			<scope>test</scope>
+		</dependency>
+
+	</dependencies>
+
+</project>
